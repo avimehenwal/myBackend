@@ -49,3 +49,99 @@
 ## CMS Lingo
 
 - pages and sub-pages, URL directory path
+
+## GraphQL
+
+- [Relay](https://relay.dev/docs/) is a JavaScript framework for fetching and managing GraphQL data in React applications that emphasizes maintainability, type safety and runtime performance.
+
+```graphql
+# query {
+#   allIngredients {
+#     id
+#     name
+#     notes
+#     category {
+#       id
+#     }
+#   }
+# }
+
+# query {
+#   categoryByName(name: "Dairy") {
+#     id
+#     name
+#     ingredients {
+#       id
+#       name
+#       notes
+#     }
+#   }
+# }
+
+query {
+  categoryByName(name: "Meat") {
+    __typename
+    name
+    ingredients {
+      __typename
+      name
+      notes
+    }
+  }
+}
+```
+
+## Deployment
+
+```
+./configure --enable-optimizations --prefix=$HOME/python3.7
+make
+make test
+sudo make install # puts the packages in PREFIX PATH
+```
+
+- https://cloud.google.com/python/django
+- Multiple deployment options
+  - kubernetes engine
+  - cloud run, serverless
+  - compute engine
+  - app engine
+- Which DB to use? which are officially supported, SQL
+  - cloud SQL and Postgres on GCP
+  - [python-spanner-django](https://github.com/googleapis/python-spanner-django/) for OLTP and horizontal scaling for RDBMS
+
+```
+The outside world <-> Nginx <-> The socket <-> Gunicorn
+
+WEB SERVER | Nginx, reverse proxy
+APP SERVER | gunicorn, uWSGI, ASGI
+
+❯ daphne cookbook.asgi:application
+```
+
+## Django database data
+
+### Dummy data
+
+Fixtures: data in a format that django can understand
+
+```
+python manage.py dumpdata
+python manage.py loaddata
+```
+
+### Real database data
+
+```
+pip install django-dbbackup
+
+python manage.py listbackups
+
+# Backup the DB
+python manage.py dbbackup
+python manage.py dbrestore
+
+# Backup the app source files
+python manage.py mediabackup
+python manage.py mediarestore
+```
