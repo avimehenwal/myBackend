@@ -48,6 +48,24 @@ app - a part, module, functionality of s/w
 
 What’s the difference between a project and an app? An app is a Web application that does something – e.g., a Weblog system, a database of public records or a small poll app. A project is a collection of configuration and apps for a particular website. A project can contain multiple apps. An app can be in multiple projects.
 
+### GCP Hosting
+
+App Engine vs Cloud Run, pricing model is different. pay-as-you-go
+
+[Ongoing costs — Cloud Run wins](https://dev.to/pcraig3/cloud-run-vs-app-engine-a-head-to-head-comparison-using-facts-and-science-1225) ✅
+
+| -            | Cloud Run | App Engine | Heroku Hobby Plan |
+| ------------ | --------- | ---------- | ----------------- |
+| Monthly cost | $0.09     | $11.29     | $7.00             |
+
+The big difference between the two services is that Cloud Run doesn’t run your container unless it’s getting requests. When a request comes in, it does 3 things:
+
+    boots up the container
+    serves the request
+    shuts down the container
+
+[Options to deploy Django?](https://cloud.google.com/python/django)
+
 ### questions
 
 - [Push messages in Django](https://stackoverflow.com/questions/10927505/how-to-build-a-push-system-in-django)
@@ -55,6 +73,7 @@ What’s the difference between a project and an app? An app is a Web applicatio
   - Internationalization as a core feature and not a optional feature
 - Create and restore django backups
   - python manage.py dbrestore.
+- [Google CLoud Run](https://cloud.google.com/run) VS Google App Engine
 
 ## projects
 
