@@ -12,6 +12,7 @@ python -m django --version
 ```
 django-admin startproject mysite
 python manage.py migrate && python manage.py runserver
+python manage.py runserver --settings=settings.local
 ```
 
 1. Requests and response
