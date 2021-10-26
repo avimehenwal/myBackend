@@ -1,0 +1,116 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "dot -> svg",
+			"type": "shell",
+			"command": "${input:graphvizAlgorithm}",
+			"args": [
+				"-Tsvg",
+				"${file}",
+				">",
+				"${workspaceFolder}/content/.vuepress/public/diagrams/${fileBasenameNoExtension}.svg",
+				"|",
+				"brave-browser",
+				"${workspaceFolder}/content/.vuepress/public/diagrams/${fileBasenameNoExtension}.svg"
+			]
+		},
+		{
+			"label": "Number of Lines of code for project",
+			"type": "shell",
+			"command": "cloc (git ls-files)"
+		},
+		{
+			"label": "Spellcheck on File :NLP",
+			"type": "shell",
+			"command": "hunspell",
+			"args": [
+				"${file}"
+			]
+		},
+		{
+			"label": "svgo: optimize all svgs",
+			"type": "shell",
+			"command": "find . -name '*.svg' -exec svgo --pretty -i {} ",
+			"args": [
+				"${file}"
+			]
+		},
+		{
+			"label": "Text Frequency - SEO keyword",
+			"type": "shell",
+			"command": "tr",
+			"args": [
+				"' '",
+				"\\n",
+				"<",
+				"${file}",
+				"|",
+				"tr",
+				"'[:upper:]'",
+				"'[:lower:]'",
+				"|",
+				"sort",
+				"|",
+				"uniq",
+				"--repeated",
+				"--count",
+				"|",
+				"sort",
+				"--reverse",
+				"--numeric-sort",
+				"|",
+				"sed",
+				"'1d'",
+				"|",
+				"awk",
+				"'{print $2\"\\t\"$1}'",
+				"|",
+				"termgraph",
+				"--custom-tick",
+				"▇",
+				"--title",
+				"SEO Text Frequency Report",
+				"--color",
+				"blue"
+			]
+		},
+		{
+			"label": "Execute bash script",
+			"type": "shell",
+			"command": "${file}",
+			"presentation": {
+				"reveal": "always",
+				"focus": true,
+				"panel": "dedicated"
+			}
+		},
+		{
+			"type": "docker-build",
+			"label": "docker-build",
+			"platform": "python",
+			"dockerBuild": {
+				"tag": "mybackend:latest",
+				"dockerfile": "${workspaceFolder}/Dockerfile",
+				"context": "${workspaceFolder}",
+				"pull": true
+			}
+		},
+		{
+			"type": "docker-run",
+			"label": "docker-run: debug",
+			"dependsOn": [
+				"docker-build"
+			],
+			"python": {
+				"args": [
+					"runserver",
+					"0.0.0.0:8000",
+					"--nothreading",
+					"--noreload"
+				],
+				"file": "PoetryProject/manage.py"
+			}
+		}
+	]
+}

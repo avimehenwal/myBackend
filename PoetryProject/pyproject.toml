@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "django-backend"
+version = "0.1.0"
+description = "My awesome django project"
+authors = ["avimehenwal <avi.mehanwal@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^3.2.8"
+bpython-django = "^0.22.2"
+bpython = "^0.21"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
