@@ -1,7 +1,6 @@
 from django.http import HttpResponse, JsonResponse
-from django.core.serializers.json import DjangoJSONEncoder
-from django.core import serializers
 from polls.models import Question
+from django.core import serializers
 
 
 def index(request):
@@ -16,8 +15,19 @@ def index(request):
 
 
 def detail(request, question_id):
-    question = Question.objects.get(question_id)
-    return HttpResponse("You're looking at question %s. %s" % (question_id, question))
+    query = Question.objects.filter(id=question_id).values().first()
+    if query:
+        result = query
+        status = "Success"
+    else:
+        result = "No result found with question ID = %s" % question_id
+        status = "Failed"
+    return JsonResponse(
+        {
+            "question": result,
+            "status": status,
+        }
+    )
 
 
 def results(request, question_id):
