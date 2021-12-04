@@ -7,4 +7,4 @@ build:
 	docker build --tag ${image_name} .
 
 run: build
-	docker run --rm -p 8000:8000 ${image_name}
+	docker run --rm -p 8000:8000 --env-file .env ${image_name}

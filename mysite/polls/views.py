@@ -21,11 +21,18 @@ def index(request):
     all_questions_serialized = list(Question.objects.values())
     return JsonResponse(
         {
-            "count": len(all_questions_serialized),
-            "questions": all_questions_serialized,
+            "count": 2,
+            "questions": "static response",
             "status": "Success",
         }
     )
+    # return JsonResponse(
+    #     {
+    #         "count": len(all_questions_serialized),
+    #         "questions": all_questions_serialized,
+    #         "status": "Success",
+    #     }
+    # )
 
 
 def detail(request, question_id):

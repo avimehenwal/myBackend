@@ -22,4 +22,4 @@ COPY . ./
 # CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 mysite.wsgi
 # CMD ["gunicorn", "--bind", "0.0.0.0:8000", "mysite.wsgi"]
 EXPOSE 8000
-CMD ["gunicorn", "-w", "4", "mysite.wsgi"]
+CMD ["gunicorn", "-w", "4", "--bind", "0.0.0.0:8000", "mysite.wsgi"]

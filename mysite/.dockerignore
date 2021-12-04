@@ -1,3 +1,7 @@
+# ignore secrets
+.env
+
+# common python files
 Dockerfile
 README.md
 *.pyc
@@ -6,6 +10,7 @@ README.md
 __pycache__
 .pytest_cache
 
+# dependency stuff
 venv
 .vscode
 db.sqlite3
