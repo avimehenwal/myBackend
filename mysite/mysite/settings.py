@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # user apps
+    "polls.apps.PollsConfig",
 ]
 
 MIDDLEWARE = [
@@ -83,7 +85,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     },
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": os.environ["DB_NAME"],
         "HOST": os.environ["DB_HOST"],
         "USER": os.environ["DB_USER"],

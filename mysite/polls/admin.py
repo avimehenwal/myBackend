@@ -1,3 +1,8 @@
 from django.contrib import admin
+from django.db.models.enums import Choices
 
-# Register your models here.
+from .models import Question
+from .models import Choice
+
+admin.site.register(Question)
+admin.site.register(Choice)
