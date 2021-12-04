@@ -36,10 +36,15 @@ Solve database related problem using **database Triggers**
 ```
 CONTAINER_NAME=postgresql-container
 
+docker run --rm --name rdbms -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
 docker run --rm --name ${CONTAINER_NAME} -p 5432:5432 -e POSTGRES_PASSWORD=somePassword -d postgres
 docker run --rm -p 5050:5050 thajeztah/pgadmin4
 
 docker exec -it -u postgres ${CONTAINER_NAME} psql
+
+# Or if psql is available locally
+psql --host=localhost --port=5432 --username=postgres
 ```
 
 https://dev.to/shree_j/how-to-install-and-run-psql-using-docker-41j2
@@ -66,3 +71,9 @@ https://dev.to/shree_j/how-to-install-and-run-psql-using-docker-41j2
 - Foreign key could be null or a value
 - Foreign key as a Reference vs only as a Constraint?
 - use SERIAL to generate Primary key IDs
+
+### What are tamplate databases in postgres?
+
+Thus that database is the "template" from which new databases are made.
+If you add objects to `template1`, these objects will be copied into subsequently
+created user databases.
