@@ -86,10 +86,11 @@ DATABASES = {
     },
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ["DB_NAME"],
-        "HOST": os.environ["DB_HOST"],
-        "USER": os.environ["DB_USER"],
-        "PASSWORD": os.environ["DB_PASS"],
+        "NAME": os.environ["POSTGRES_DB_NAME"],
+        "HOST": os.environ["POSTGRES_DB_HOST"],
+        "USER": os.environ["POSTGRES_DB_USER"],
+        "PASSWORD": os.environ["POSTGRES_DB_PASS"],
+        "PORT": os.environ["POSTGRES_DB_PORT"],
     },
 }
 
@@ -136,3 +137,14 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Email Settings
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_HOST ="smtp.sendgrid.net"
+
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ["GMAIL_USER"]
+EMAIL_HOST_PASSWORD = os.environ["GMAIL_PASS"]

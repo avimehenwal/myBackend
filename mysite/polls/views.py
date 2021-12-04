@@ -1,6 +1,20 @@
 from django.http import HttpResponse, JsonResponse
 from polls.models import Choice, Question
 from django.core import serializers
+from django.core.mail import send_mail
+
+from django.core.mail import EmailMessage
+
+
+def SendEmail():
+    status = False
+    try:
+        email = EmailMessage("test", "test", to=["avimehenwal@gmail.com"])
+        email.send()
+        status = True
+    except Exception as e:
+        print(e)
+    return status
 
 
 def index(request):
