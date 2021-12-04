@@ -1,5 +1,5 @@
 from django.http import HttpResponse, JsonResponse
-from polls.models import Question
+from polls.models import Choice, Question
 from django.core import serializers
 
 
@@ -30,9 +30,20 @@ def detail(request, question_id):
     )
 
 
-def results(request, question_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % question_id)
+def choices(request, question_id):
+    query = list(Choice.objects.filter(question_id=question_id).values())
+    print(query)
+    result = {}
+    if query:
+        result["status"] = "Success"
+        result["choices"] = query
+        return JsonResponse(result)
+    else:
+        result["status"] = "Failed"
+        result["message"] = (
+            "Sorry no choicces found for question with id %s" % question_id
+        )
+        return JsonResponse(result, status=204)
 
 
 def vote(request, question_id):
