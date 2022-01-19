@@ -19,7 +19,7 @@ run: build
 	docker run --rm -p 8000:8000 --env-file .env ${image_name}
 
 deploy: setup
-	gcloud run deploy mysite --source .
+	gcloud run deploy mysite --allow-unauthenticated --source .
 
 test:
 	echo "secret ${GMAIL_PASS}"
