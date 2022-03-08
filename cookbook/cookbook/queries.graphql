@@ -1,0 +1,18 @@
+# print a category detail byName
+{
+  categoryByName(name: "aaa") {
+    id
+    name
+    __typename
+  }
+}
+
+# list all ingredients
+# {
+#   allIngredients {
+#     id
+#     name
+#     notes
+#     __typename
+#   }
+# }
