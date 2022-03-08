@@ -1,6 +1,6 @@
 # myBackend
 
-![Django architecture](../myBackend/docs/django-mysql-crud-rest-framework-archirecture.png)
+![Django architecture](./docs/img/django-mysql-crud-rest-framework-archirecture.png)
 
 ```
 python -m django --version
