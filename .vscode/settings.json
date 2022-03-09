@@ -1,22 +1,6 @@
 {
   "conventionalCommits.scopes": [
-    "genesis",
-    "scaffold",
-    "core",
-    "cli",
-    "website",
-    "api",
-    "parser",
-    "package-manager",
-    "changelog",
-    "readme",
-    "component",
-    "lint",
-    "router",
-    "state-management",
-    "localization",
-    "release",
-    "vscode",
-    "pip"
+    "pip",
+    "python"
   ]
 }
